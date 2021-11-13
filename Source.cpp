@@ -1,688 +1,103 @@
 #include <iostream>
-#include <ctime>
-#include "stdlib.h"
-
-#define reset "\x1b[0m"
-
 using namespace std;
-
 int main() {
 	setlocale(0, "");
-	cout << "[+] Выбираем цвет\n\n";
-	cout << "[1] Желтый\n";
-	cout << "[2] Голубой\n";
-	cout << "[3] Розовый\n";
-	cout << "[4] Бирюзовый\n\n";
-	int colorx, color0, color, color1;
-
-	cout << "[+] Выберите цвет для крестика: ";
-	cin >> colorx;
-	cout << "[+] Выберите цвет для нолика: ";
-	cin >> color0;
-	
-
-	if (colorx == 1) {
-		color = 43;
-	}
-	else if (colorx == 2) {
-		color = 44;
-	}
-	else if (colorx == 3) {
-		color = 45;
-	}
-	else if (colorx == 4) {
-		color = 46;
-	}
-
-	if (color0 == 1) {
-		color1 = 43;
-	}
-	else if (color0 == 2) {
-		color1 = 44;
-	}
-	else if (color0 == 3) {
-		color1 = 45;
-	}
-	else if (color0 == 4) {
-		color1 = 46;
-	}
-
-	cout << "[ + ] Правила игры:\nИгроки по очереди ставят на свободные клетки поля  знаки (один всегда крестики, другой всегда нолики).\n";
-	cout << "Первый, выстроивший в ряд  своих фигуры по вертикали, горизонтали или диагонали, выигрывает.Первый ход делает игрок, ставящий крестики.\n\n";
-	cout << "[1] Игра 3 на 3 с ботом\n";
-	cout << "[2] Игра 3 на 3 с игроком\n";
-	cout << "[3] Игра 4 на 4 с ботом\n";
-	cout << "[4] Игра 4 на 4 с игроком\n";
-	cout << "[5] Игра 5 на 5 с ботом\n";
-	cout << "[6] Игра 5 на 5 с игроком\n\n";
-
-	cout << "Решите на какой карте вы хотите играть и с кем: ";
-	int play;
-	cin >> play;
-	switch (play) {
-	case 1: {
-		srand(time(NULL));
-		char pole[3][3]{ { '|', '|', '|'},  {'|', '|', '|',}, {'|', '|', '|'} };
-		int a, b;
-		int h = 0;
-		bool playerWin = false, computerWin = false, noWin = false;
-		bool isx = true;
-
-		do {
-			for (int i = 0; i < 3; i++) {
-				for (int j = 0; j < 3; j++) {
-					if (pole[i][j] == 'x')
-					{
-						cout << "\x1b[" << color << "m" << pole[i][j] << reset;
-					}
-					else if (pole[i][j] == 'o')
-					{
-						cout << "\x1b[" << color1 << "m" << pole[i][j] << reset;
-					}
-					else
-					{
-						cout << pole[i][j];
-					}
-				}
-				cout << endl;
-			}
-			
-			if (isx == true) {
-				cout << "Введите позицию: ";
-				cin >> a >> b;
-				pole[a - 1][b - 1] = 'x';
-				h++;
-				isx = false;
-			}
-			else {
-
-
-				if (h != 9) {
-					do {
-						a = rand() % 3;
-						b = rand() % 3;
-
-
-					} while (pole[a][b] != '|');
-					pole[a][b] = 'o';
-					h++;
-					isx = true;
-				}
-
-			}
-
-			if ((pole[0][0] == 'x' && pole[0][1] == 'x' && pole[0][2] == 'x') || // по строкам
-				(pole[1][0] == 'x' && pole[1][1] == 'x' && pole[1][2] == 'x') ||
-				(pole[2][0] == 'x' && pole[2][1] == 'x' && pole[2][2] == 'x') ||
-
-
-				(pole[0][0] == 'x' && pole[1][0] == 'x' && pole[2][0] == 'x') || // по столбцам
-				(pole[0][1] == 'x' && pole[1][1] == 'x' && pole[2][1] == 'x') ||
-				(pole[0][2] == 'x' && pole[1][2] == 'x' && pole[2][2] == 'x') ||
-
-
-				(pole[0][0] == 'x' && pole[1][1] == 'x' && pole[2][2] == 'x') || // по диагонали
-				(pole[2][0] == 'x' && pole[1][1] == 'x' && pole[0][2] == 'x')) {
-				playerWin = true;
-			}
-
-			if ((pole[0][0] == 'o' && pole[0][1] == 'o' && pole[0][2] == 'o') || // по строкам
-				(pole[1][0] == 'o' && pole[1][1] == 'o' && pole[1][2] == 'o') ||
-				(pole[2][0] == 'o' && pole[2][1] == 'o' && pole[2][2] == 'o') ||
-
-
-				(pole[0][0] == 'o' && pole[1][0] == 'o' && pole[2][0] == 'o') || // по столбцам
-				(pole[0][1] == 'o' && pole[1][1] == 'o' && pole[2][1] == 'o') ||
-				(pole[0][2] == 'o' && pole[1][2] == 'o' && pole[2][2] == 'o') ||
-
-
-				(pole[0][0] == 'o' && pole[1][1] == 'o' && pole[2][2] == 'o') || // по диагонали
-				(pole[2][0] == 'o' && pole[1][1] == 'o' && pole[0][2] == 'o')) {
-				computerWin = true;
-
-			}
-			if (playerWin == false && computerWin == false && h == 9) {
-				noWin = true;
-
-			}
-
-
-			system("cls");
-		} while (playerWin == false && computerWin == false && noWin == false);
-		if (playerWin == true) {
-			cout << "Игрок выиграл! Поздравляем :)";
-		}
-		if (computerWin == true) {
-			cout << "Компьютер выиграл! Увы :(";
-		}
-		if (noWin == true) {
-			cout << "Ничья!";
-		}
-	}
-		  break;
-
-
-
-	case 2: {
-		{
-			srand(time(NULL));
-			char pole[3][3]{ { '|', '|', '|'},  {'|', '|', '|',}, {'|', '|', '|'} };
-			int x, y;
-			int h = 0;
-			bool isX = true;
-
-			bool playerWin = false, player1Win = false, noWin = false;
-
-			do {
-				for (int i = 0; i < 3; i++) {
-					for (int j = 0; j < 3; j++) {
-						if (pole[i][j] == 'x')
-						{
-							cout << "\x1b[" << color << "m" << pole[i][j] << reset;
-						}
-						else if (pole[i][j] == 'o')
-						{
-							cout << "\x1b[" << color1 << "m" << pole[i][j] << reset;
-						}
-						else
-						{
-							cout << pole[i][j];
-						}
-					}
-					cout << endl;
-				}
-				if (isX == true) {
-					cout << "Введите позицию 1 игрок: ";
-					cin >> x >> y;
-					pole[x - 1][y - 1] = 'x';
-					h++;
-					isX = false;
-
-				}
-				else {
-
-					if (h != 9) {
-						cout << "Введите позицию 2 игрок: ";
-						cin >> x >> y;
-						pole[x - 1][y - 1] = 'o';
-						h++;
-						isX = true;
-
-					}
-
-				}
-
-				if ((pole[0][0] == 'x' && pole[0][1] == 'x' && pole[0][2] == 'x') || // по строкам
-					(pole[1][0] == 'x' && pole[1][1] == 'x' && pole[1][2] == 'x') ||
-					(pole[2][0] == 'x' && pole[2][1] == 'x' && pole[2][2] == 'x') ||
-
-
-					(pole[0][0] == 'x' && pole[1][0] == 'x' && pole[2][0] == 'x') || // по столбцам
-					(pole[0][1] == 'x' && pole[1][1] == 'x' && pole[2][1] == 'x') ||
-					(pole[0][2] == 'x' && pole[1][2] == 'x' && pole[2][2] == 'x') ||
-
-
-					(pole[0][0] == 'x' && pole[1][1] == 'x' && pole[2][2] == 'x') || // по диагонали
-					(pole[2][0] == 'x' && pole[1][1] == 'x' && pole[0][2] == 'x')) {
-					playerWin = true;
-				}
-
-				if ((pole[0][0] == 'o' && pole[0][1] == 'o' && pole[0][2] == 'o') || // по строкам
-					(pole[1][0] == 'o' && pole[1][1] == 'o' && pole[1][2] == 'o') ||
-					(pole[2][0] == 'o' && pole[2][1] == 'o' && pole[2][2] == 'o') ||
-
-
-					(pole[0][0] == 'o' && pole[1][0] == 'o' && pole[2][0] == 'o') || // по столбцам
-					(pole[0][1] == 'o' && pole[1][1] == 'o' && pole[2][1] == 'o') ||
-					(pole[0][2] == 'o' && pole[1][2] == 'o' && pole[2][2] == 'o') ||
-
-
-					(pole[0][0] == 'o' && pole[1][1] == 'o' && pole[2][2] == 'o') || // по диагонали
-					(pole[2][0] == 'o' && pole[1][1] == 'o' && pole[0][2] == 'o')) {
-					player1Win = true;
-
-				}
-				if (playerWin == false && player1Win == false && h == 9) {
-					noWin = true;
-
-				}
-
-
-				system("cls");
-			} while (playerWin == false && player1Win == false && noWin == false);
-			if (playerWin == true) {
-				cout << " Первый игрок выиграл! Поздравляем :)";
-			}
-			if (player1Win == true) {
-				cout << " Второй игрок выиграл! Поздравляем :)";
-			}
-			if (noWin == true) {
-				cout << "Ничья!";
-			}
-		} break;
-	}
-
-	case 3: { { srand(time(NULL));
-		char pole[4][4]{ { '|', '|', '|','|' },  {'|', '|', '|', '|' }, {'|', '|', '|', '|' }, {'|', '|', '|', '|' } };
-		int c, d;
-		int h = 0;
-		bool playerWin = false, computerWin = false, noWin = false;
-		bool check = true;
-
-		do {
-			for (int i = 0; i < 3; i++) {
-				for (int j = 0; j < 3; j++) {
-					if (pole[i][j] == 'x')
-					{
-						cout << "\x1b[" << color << "m" << pole[i][j] << reset;
-					}
-					else if (pole[i][j] == 'o')
-					{
-						cout << "\x1b[" << color1 << "m" << pole[i][j] << reset;
-					}
-					else
-					{
-						cout << pole[i][j];
-					}
-				}
-				cout << endl;
-			}
-			if (check == true) {
-				cout << "Введите позицию: ";
-				cin >> c >> d;
-				pole[c - 1][d - 1] = 'x';
-				h++;
-				check = false;
-			}
-			else {
-
-
-				if (h != 16) {
-					do {
-						c = rand() % 4;
-						d = rand() % 4;
-
-
-					} while (pole[c][d] != '|');
-					pole[c][d] = 'o';
-					h++;
-					check = true;
-				}
-
-			}
-
-			if ((pole[0][0] == 'x' && pole[0][1] == 'x' && pole[0][2] == 'x' && pole[0][3] == 'x') || // по строкам
-				(pole[1][0] == 'x' && pole[1][1] == 'x' && pole[1][2] == 'x' && pole[1][3] == 'x') ||
-				(pole[2][0] == 'x' && pole[2][1] == 'x' && pole[2][2] == 'x' && pole[2][3] == 'x') ||
-				(pole[3][0] == 'x' && pole[3][1] == 'x' && pole[3][2] == 'x' && pole[3][3] == 'x') ||
-
-				(pole[0][0] == 'x' && pole[1][0] == 'x' && pole[2][0] == 'x' && pole[3][0] == 'x') || // по столбцам
-				(pole[0][1] == 'x' && pole[1][1] == 'x' && pole[2][1] == 'x' && pole[3][1] == 'x') ||
-				(pole[0][2] == 'x' && pole[1][2] == 'x' && pole[2][2] == 'x' && pole[3][2] == 'x') ||
-				(pole[0][3] == 'x' && pole[1][3] == 'x' && pole[2][3] == 'x' && pole[3][3] == 'x') ||
-
-
-				(pole[0][0] == 'x' && pole[1][1] == 'x' && pole[2][2] == 'x' && pole[3][3] == 'x') || // по диагонали
-				(pole[3][0] == 'x' && pole[2][1] == 'x' && pole[1][2] == 'x' && pole[0][3] == 'x')) {
-				playerWin = true;
-			}
-
-			if ((pole[0][0] == 'x' && pole[0][1] == 'x' && pole[0][2] == 'x' && pole[0][3] == 'x') || // по строкам
-				(pole[1][0] == 'x' && pole[1][1] == 'x' && pole[1][2] == 'x' && pole[1][3] == 'x') ||
-				(pole[2][0] == 'x' && pole[2][1] == 'x' && pole[2][2] == 'x' && pole[2][3] == 'x') ||
-				(pole[3][0] == 'x' && pole[3][1] == 'x' && pole[3][2] == 'x' && pole[3][3] == 'x') ||
-
-				(pole[0][0] == 'x' && pole[1][0] == 'x' && pole[2][0] == 'x') && pole[3][0] == 'x' || // по столбцам
-				(pole[0][1] == 'x' && pole[1][1] == 'x' && pole[2][1] == 'x' && pole[3][1] == 'x') ||
-				(pole[0][2] == 'x' && pole[1][2] == 'x' && pole[2][2] == 'x' && pole[3][2] == 'x') ||
-				(pole[0][3] == 'x' && pole[1][3] == 'x' && pole[2][3] == 'x' && pole[3][3] == 'x') ||
-
-
-				(pole[0][0] == 'x' && pole[1][1] == 'x' && pole[2][2] == 'x' && pole[3][3] == 'x') || // по диагонали
-				(pole[3][0] == 'x' && pole[2][1] == 'x' && pole[1][2] == 'x' && pole[0][3] == 'x')) {
-				computerWin = true;
-
-			}
-			if (playerWin == false && computerWin == false && h == 16) {
-				noWin = true;
-
-			}
-
-
-			system("cls");
-		} while (playerWin == false && computerWin == false && noWin == false);
-
-		if (playerWin == true) {
-			cout << "Игрок выиграл! Поздравляем :)";
-		}
-		else if (computerWin == true) {
-			cout << "Компьютер выиграл! Увы :(";
-		}
-		else {
-			cout << "Ничья!";
-		}
-
-		} break;
-	}
-
-
-	case 4: { { srand(time(NULL));
-		char pole[4][4]{ { '|', '|', '|','|' },  {'|', '|', '|', '|' }, {'|', '|', '|', '|' }, {'|', '|', '|', '|' } };
-		int s, k;
-		int h = 0;
-		bool playerWin = false, playerWin1 = false, noWin = false;
-		bool check1 = true;
-
-		do {
-			for (int i = 0; i < 3; i++) {
-				for (int j = 0; j < 3; j++) {
-					if (pole[i][j] == 'x')
-					{
-						cout << "\x1b[" << color << "m" << pole[i][j] << reset;
-					}
-					else if (pole[i][j] == 'o')
-					{
-						cout << "\x1b[" << color1 << "m" << pole[i][j] << reset;
-					}
-					else
-					{
-						cout << pole[i][j];
-					}
-				}
-				cout << endl;
-			}
-			if (check1 == true) {
-				cout << "Введите позицию 1 игрок: ";
-				cin >> s >> k;
-				pole[s - 1][k - 1] = 'x';
-				h++;
-				check1 = false;
-
-			}
-			else {
-
-				if (h != 16) {
-					cout << "Введите позицию 2 игрок: ";
-					cin >> s >> k;
-					pole[s - 1][k - 1] = 'o';
-					h++;
-					check1 = true;
-
-				}
-
-			}
-
-			if ((pole[0][0] == 'x' && pole[0][1] == 'x' && pole[0][2] == 'x' && pole[0][3] == 'x') || // по строкам
-				(pole[1][0] == 'x' && pole[1][1] == 'x' && pole[1][2] == 'x' && pole[1][3] == 'x') ||
-				(pole[2][0] == 'x' && pole[2][1] == 'x' && pole[2][2] == 'x' && pole[2][3] == 'x') ||
-				(pole[3][0] == 'x' && pole[3][1] == 'x' && pole[3][2] == 'x' && pole[3][3] == 'x') ||
-
-				(pole[0][0] == 'x' && pole[1][0] == 'x' && pole[2][0] == 'x') && pole[3][0] == 'x' || // по столбцам
-				(pole[0][1] == 'x' && pole[1][1] == 'x' && pole[2][1] == 'x' && pole[3][1] == 'x') ||
-				(pole[0][2] == 'x' && pole[1][2] == 'x' && pole[2][2] == 'x' && pole[3][2] == 'x') ||
-				(pole[0][3] == 'x' && pole[1][3] == 'x' && pole[2][3] == 'x' && pole[3][3] == 'x') ||
-
-
-				(pole[0][0] == 'x' && pole[1][1] == 'x' && pole[2][2] == 'x' && pole[3][3] == 'x') || // по диагонали
-				(pole[3][0] == 'x' && pole[2][1] == 'x' && pole[1][2] == 'x' && pole[0][3] == 'x')) {
-				playerWin = true;
-			}
-
-			if ((pole[0][0] == 'x' && pole[0][1] == 'x' && pole[0][2] == 'x' && pole[0][3] == 'x') || // по строкам
-				(pole[1][0] == 'x' && pole[1][1] == 'x' && pole[1][2] == 'x' && pole[1][3] == 'x') ||
-				(pole[2][0] == 'x' && pole[2][1] == 'x' && pole[2][2] == 'x' && pole[2][3] == 'x') ||
-				(pole[3][0] == 'x' && pole[3][1] == 'x' && pole[3][2] == 'x' && pole[3][3] == 'x') ||
-
-				(pole[0][0] == 'x' && pole[1][0] == 'x' && pole[2][0] == 'x') && pole[3][0] == 'x' || // по столбцам
-				(pole[0][1] == 'x' && pole[1][1] == 'x' && pole[2][1] == 'x' && pole[3][1] == 'x') ||
-				(pole[0][2] == 'x' && pole[1][2] == 'x' && pole[2][2] == 'x' && pole[3][2] == 'x') ||
-				(pole[0][3] == 'x' && pole[1][3] == 'x' && pole[2][3] == 'x' && pole[3][3] == 'x') ||
-
-
-				(pole[0][0] == 'x' && pole[1][1] == 'x' && pole[2][2] == 'x' && pole[3][3] == 'x') || // по диагонали
-				(pole[3][0] == 'x' && pole[2][1] == 'x' && pole[1][2] == 'x' && pole[0][3] == 'x')) {
-				playerWin1 = true;
-
-			}
-			if (playerWin == false && playerWin1 == false && h == 16) {
-				noWin = true;
-
-			}
-
-
-			system("cls");
-		} while (playerWin == false && playerWin1 == false && noWin == false);
-
-		if (playerWin == true) {
-			cout << "Первывй игрок выиграл! Поздравляем :)";
-		}
-		else if (playerWin1 == true) {
-			cout << "Второй игрок  выиграл! Увы :(";
-		}
-		else {
-			cout << "Ничья!";
-		}
-
-		} break;
-	}
-	case 5: { { srand(time(NULL));
-		char pole[5][5]{ { '|', '|', '|','|','|' },  {'|', '|', '|', '|','|' }, {'|', '|', '|','|', '|' }, {'|', '|','|', '|', '|' },  {'|','|', '|', '|', '|' } };
-		int c, d;
-		int h = 0;
-		bool playerWin = false, computerWin = false, noWin = false;
-		bool check = true;
-
-		do {
-			for (int i = 0; i < 3; i++) {
-				for (int j = 0; j < 3; j++) {
-					if (pole[i][j] == 'x')
-					{
-						cout << "\x1b[" << color << "m" << pole[i][j] << reset;
-					}
-					else if (pole[i][j] == 'o')
-					{
-						cout << "\x1b[" << color1 << "m" << pole[i][j] << reset;
-					}
-					else
-					{
-						cout << pole[i][j];
-					}
-				}
-				cout << endl;
-			}
-			if (check == true) {
-				cout << "Введите позицию: ";
-				cin >> c >> d;
-				pole[c - 1][d - 1] = 'x';
-				h++;
-				check = false;
-			}
-			else {
-
-
-				if (h != 25) {
-					do {
-						c = rand() % 5;
-						d = rand() % 5;
-
-
-					} while (pole[c][d] != '|');
-					pole[c][d] = 'o';
-					h++;
-					check = true;
-				}
-
-			}
-
-			if ((pole[0][0] == 'x' && pole[0][1] == 'x' && pole[0][2] == 'x' && pole[0][3] == 'x' && pole[0][4] == 'x') || // по строкам
-				(pole[1][0] == 'x' && pole[1][1] == 'x' && pole[1][2] == 'x' && pole[1][3] == 'x' && pole[1][4] == 'x') ||
-				(pole[2][0] == 'x' && pole[2][1] == 'x' && pole[2][2] == 'x' && pole[2][3] == 'x' && pole[2][4] == 'x') ||
-				(pole[3][0] == 'x' && pole[3][1] == 'x' && pole[3][2] == 'x' && pole[3][3] == 'x' && pole[3][4] == 'x') ||
-				(pole[4][0] == 'x' && pole[4][1] == 'x' && pole[4][2] == 'x' && pole[4][3] == 'x' && pole[4][4] == 'x') ||
-
-				(pole[0][0] == 'x' && pole[1][0] == 'x' && pole[2][0] == 'x' && pole[3][0] == 'x' && pole[4][0] == 'x') || // по столбцам
-				(pole[0][1] == 'x' && pole[1][1] == 'x' && pole[2][1] == 'x' && pole[3][1] == 'x' && pole[4][1] == 'x') ||
-				(pole[0][2] == 'x' && pole[1][2] == 'x' && pole[2][2] == 'x' && pole[3][2] == 'x' && pole[4][2] == 'x') ||
-				(pole[0][3] == 'x' && pole[1][3] == 'x' && pole[2][3] == 'x' && pole[3][3] == 'x' && pole[4][3] == 'x') ||
-				(pole[0][4] == 'x' && pole[1][4] == 'x' && pole[2][4] == 'x' && pole[3][4] == 'x' && pole[4][4] == 'x') ||
-
-
-				(pole[0][0] == 'x' && pole[1][1] == 'x' && pole[2][2] == 'x' && pole[3][3] == 'x' && pole[4][4] == 'x') || // по диагонали
-				(pole[4][0] == 'x' && pole[3][1] == 'x' && pole[2][2] == 'x' && pole[1][3] == 'x' && pole[0][4] == 'x')) {
-				playerWin = true;
-			}
-
-			if ((pole[0][0] == 'x' && pole[0][1] == 'x' && pole[0][2] == 'x' && pole[0][3] == 'x' && pole[0][4] == 'x') || // по строкам
-				(pole[1][0] == 'x' && pole[1][1] == 'x' && pole[1][2] == 'x' && pole[1][3] == 'x' && pole[1][4] == 'x') ||
-				(pole[2][0] == 'x' && pole[2][1] == 'x' && pole[2][2] == 'x' && pole[2][3] == 'x' && pole[2][4] == 'x') ||
-				(pole[3][0] == 'x' && pole[3][1] == 'x' && pole[3][2] == 'x' && pole[3][3] == 'x' && pole[3][4] == 'x') ||
-				(pole[4][0] == 'x' && pole[4][1] == 'x' && pole[4][2] == 'x' && pole[4][3] == 'x' && pole[4][4] == 'x') ||
-
-				(pole[0][0] == 'x' && pole[1][0] == 'x' && pole[2][0] == 'x' && pole[3][0] == 'x' && pole[4][0] == 'x') || // по столбцам
-				(pole[0][1] == 'x' && pole[1][1] == 'x' && pole[2][1] == 'x' && pole[3][1] == 'x' && pole[4][1] == 'x') ||
-				(pole[0][2] == 'x' && pole[1][2] == 'x' && pole[2][2] == 'x' && pole[3][2] == 'x' && pole[4][2] == 'x') ||
-				(pole[0][3] == 'x' && pole[1][3] == 'x' && pole[2][3] == 'x' && pole[3][3] == 'x' && pole[4][3] == 'x') ||
-				(pole[0][4] == 'x' && pole[1][4] == 'x' && pole[2][4] == 'x' && pole[3][4] == 'x' && pole[4][4] == 'x') ||
-
-
-				(pole[0][0] == 'x' && pole[1][1] == 'x' && pole[2][2] == 'x' && pole[3][3] == 'x' && pole[4][4] == 'x') || // по диагонали
-				(pole[4][0] == 'x' && pole[3][1] == 'x' && pole[2][2] == 'x' && pole[1][3] == 'x' && pole[0][4] == 'x')) {
-				computerWin = true;
-
-			}
-			if (playerWin == false && computerWin == false && h == 25) {
-				noWin = true;
-
-			}
-
-
-			system("cls");
-		} while (playerWin == false && computerWin == false && noWin == false);
-
-		if (playerWin == true) {
-			cout << "Игрок выиграл! Поздравляем :)";
-		}
-		else if (computerWin == true) {
-			cout << " Компьютер выиграл! Увы :(";
-		}
-		else {
-			cout << "Ничья!";
-		}
-
-		} break;
-	}
-	case 6: { { srand(time(NULL));
-		char pole[5][5]{ { '|', '|', '|','|','|' },  {'|', '|', '|', '|','|' }, {'|', '|', '|','|', '|' }, {'|', '|','|', '|', '|' },  {'|','|', '|', '|', '|' } };
-		int s, k;
-		int h = 0;
-		bool playerWin = false, player1Win = false, noWin = false;
-		bool check1 = true;
-
-		do {
-			for (int i = 0; i < 3; i++) {
-				for (int j = 0; j < 3; j++) {
-					if (pole[i][j] == 'x')
-					{
-						cout << "\x1b[" << color << "m" << pole[i][j] << reset;
-					}
-					else if (pole[i][j] == 'o')
-					{
-						cout << "\x1b[" << color1 << "m" << pole[i][j] << reset;
-					}
-					else
-					{
-						cout << pole[i][j];
-					}
-				}
-				cout << endl;
-			}
-				
-			if (check1 == true) {
-				cout << "Введите позицию 1 игрок: ";
-				cin >> s >> k;
-				pole[s - 1][k - 1] = 'x';
-				h++;
-				check1 = false;
-
-			}
-			else {
-
-				if (h != 25) {
-					cout << "Введите позицию 2 игрок: ";
-					cin >> s >> k;
-					pole[s - 1][k - 1] = 'o';
-					h++;
-					check1 = true;
-
-				}
-
-			}
-
-			if ((pole[0][0] == 'x' && pole[0][1] == 'x' && pole[0][2] == 'x' && pole[0][3] == 'x' && pole[0][4] == 'x') || // по строкам
-				(pole[1][0] == 'x' && pole[1][1] == 'x' && pole[1][2] == 'x' && pole[1][3] == 'x' && pole[1][4] == 'x') ||
-				(pole[2][0] == 'x' && pole[2][1] == 'x' && pole[2][2] == 'x' && pole[2][3] == 'x' && pole[2][4] == 'x') ||
-				(pole[3][0] == 'x' && pole[3][1] == 'x' && pole[3][2] == 'x' && pole[3][3] == 'x' && pole[3][4] == 'x') ||
-				(pole[4][0] == 'x' && pole[4][1] == 'x' && pole[4][2] == 'x' && pole[4][3] == 'x' && pole[4][4] == 'x') ||
-
-				(pole[0][0] == 'x' && pole[1][0] == 'x' && pole[2][0] == 'x' && pole[3][0] == 'x' && pole[4][0] == 'x') || // по столбцам
-				(pole[0][1] == 'x' && pole[1][1] == 'x' && pole[2][1] == 'x' && pole[3][1] == 'x' && pole[4][1] == 'x') ||
-				(pole[0][2] == 'x' && pole[1][2] == 'x' && pole[2][2] == 'x' && pole[3][2] == 'x' && pole[4][2] == 'x') ||
-				(pole[0][3] == 'x' && pole[1][3] == 'x' && pole[2][3] == 'x' && pole[3][3] == 'x' && pole[4][3] == 'x') ||
-				(pole[0][4] == 'x' && pole[1][4] == 'x' && pole[2][4] == 'x' && pole[3][4] == 'x' && pole[4][4] == 'x') ||
-
-
-				(pole[0][0] == 'x' && pole[1][1] == 'x' && pole[2][2] == 'x' && pole[3][3] == 'x' && pole[4][4] == 'x') || // по диагонали
-				(pole[4][0] == 'x' && pole[3][1] == 'x' && pole[2][2] == 'x' && pole[1][3] == 'x' && pole[0][4] == 'x')) {
-				playerWin = true;
-			}
-
-			if ((pole[0][0] == 'x' && pole[0][1] == 'x' && pole[0][2] == 'x' && pole[0][3] == 'x' && pole[0][4] == 'x') || // по строкам
-				(pole[1][0] == 'x' && pole[1][1] == 'x' && pole[1][2] == 'x' && pole[1][3] == 'x' && pole[1][4] == 'x') ||
-				(pole[2][0] == 'x' && pole[2][1] == 'x' && pole[2][2] == 'x' && pole[2][3] == 'x' && pole[2][4] == 'x') ||
-				(pole[3][0] == 'x' && pole[3][1] == 'x' && pole[3][2] == 'x' && pole[3][3] == 'x' && pole[3][4] == 'x') ||
-				(pole[4][0] == 'x' && pole[4][1] == 'x' && pole[4][2] == 'x' && pole[4][3] == 'x' && pole[4][4] == 'x') ||
-
-				(pole[0][0] == 'x' && pole[1][0] == 'x' && pole[2][0] == 'x' && pole[3][0] == 'x' && pole[4][0] == 'x') || // по столбцам
-				(pole[0][1] == 'x' && pole[1][1] == 'x' && pole[2][1] == 'x' && pole[3][1] == 'x' && pole[4][1] == 'x') ||
-				(pole[0][2] == 'x' && pole[1][2] == 'x' && pole[2][2] == 'x' && pole[3][2] == 'x' && pole[4][2] == 'x') ||
-				(pole[0][3] == 'x' && pole[1][3] == 'x' && pole[2][3] == 'x' && pole[3][3] == 'x' && pole[4][3] == 'x') ||
-				(pole[0][4] == 'x' && pole[1][4] == 'x' && pole[2][4] == 'x' && pole[3][4] == 'x' && pole[4][4] == 'x') ||
-
-
-				(pole[0][0] == 'x' && pole[1][1] == 'x' && pole[2][2] == 'x' && pole[3][3] == 'x' && pole[4][4] == 'x') || // по диагонали
-				(pole[4][0] == 'x' && pole[3][1] == 'x' && pole[2][2] == 'x' && pole[1][3] == 'x' && pole[0][4] == 'x')) {
-				player1Win = true;
-
-			}
-			if (playerWin == false && player1Win == false && h == 25) {
-				noWin = true;
-
-			}
-
-
-			system("cls");
-		} while (playerWin == false && player1Win == false && noWin == false);
-
-		if (playerWin == true) {
-			cout << " Первый игрок выиграл! Поздравляем :)";
-		}
-		else if (player1Win == true) {
-			cout << " Второй  игрок выиграл! Увы :(";
-		}
-		else {
-			cout << "Ничья!";
-		}
-
-		} break;
-	}
-
-
-	}
-		  int _; cin >> _;
-		  return 0;
-
-	}
-
-
-	
-	
+	int a_1 = 1, a_2 = 2, a_3 = 3, a_4 = 4, a_5 = 5, a_6 = 6, a_7 = 7, a_8 = 8, a_9 = 9, a_10 = 10;
+	cout << "Тип данных int" << endl;
+	cout << " [1] a_1 = " << a_1 << " | размер: 4 б. " << endl;
+	cout << " [2] a_2 = " << a_2 << " | размер: 4 б. " << endl;
+	cout << " [3] a_3 = " << a_3 << " | размер: 4 б. " << endl;
+	cout << " [4] a_4 = " << a_4 << " | размер: 4 б. " << endl;
+	cout << " [5] a_5 = " << a_5 << " | размер: 4 б. " << endl;
+	cout << " [6] a_6 = " << a_6 << " | размер: 4 б. " << endl;
+	cout << " [7] a_7 = " << a_7 << " | размер: 4 б. " << endl;
+	cout << " [8] a_8 = " << a_8 << " | размер: 4 б. " << endl;
+	cout << " [9] a_9 = " << a_9 << " | размер: 4 б. " << endl;
+	cout << " [10] a_10 = " << a_10 << " | размер: 4 б. " << endl;
+	long b_1 = 1, b_2 = 2, b_3 = 3, b_4 = 4, b_5 = 5, b_6 = 6, b_7 = 7, b_8 = 8, b_9 = 9, b_10 = 10;
+	cout << "Тип данных long" << endl;
+	cout << " [1] b_1 = " << b_1 << " | размер: 4 б. " << endl;
+	cout << " [2] b_2 = " << b_2 << " | размер: 4 б. " << endl;
+	cout << " [3] b_3 = " << b_3 << " | размер: 4 б. " << endl;
+	cout << " [4] b_4 = " << b_4 << " | размер: 4 б. " << endl;
+	cout << " [5] b_5 = " << b_5 << " | размер: 4 б. " << endl;
+	cout << " [6] b_6 = " << b_6 << " | размер: 4 б. " << endl;
+	cout << " [7] b_7 = " << b_7 << " | размер: 4 б. " << endl;
+	cout << " [8] b_8 = " << b_8 << " | размер: 4 б. " << endl;
+	cout << " [9] b_9 = " << b_9 << " | размер: 4 б. " << endl;
+	cout << " [10] b_10 = " << b_10 << " | размер: 4 б. " << endl;
+	short c_1 = 1, c_2 = 2, c_3 = 3, c_4 = 4, c_5 = 5, c_6 = 6, c_7 = 7, c_8 = 8, c_9 = 9, c_10 = 10;
+	cout << "Тип данных short" << endl;
+	cout << " [1] c_1 = " << c_1 << " | размер: 2 б. " << endl;
+	cout << " [2] c_2 = " << c_2 << " | размер: 2 б. " << endl;
+	cout << " [3] c_3 = " << c_3 << " | размер: 2 б. " << endl;
+	cout << " [4] c_4 = " << c_4 << " | размер: 2 б. " << endl;
+	cout << " [5] c_5 = " << c_5 << " | размер: 2 б. " << endl;
+	cout << " [6] c_6 = " << c_6 << " | размер: 2 б. " << endl;
+	cout << " [7] c_7 = " << c_7 << " | размер: 2 б. " << endl;
+	cout << " [8] c_8 = " << c_8 << " | размер: 2 б. " << endl;
+	cout << " [9] c_9 = " << c_9 << " | размер: 2 б. " << endl;
+	cout << " [10] c_10 = " << c_10 << " | размер: 2 б. " << endl;
+	char d_1 = 'a', d_2 = 'b', d_3 = 'c', d_4 = 'e', d_5 = 'f', d_6 = 'g', d_7 = 'h', d_8 = 'j', d_9 = 'k', d_10 = 'l';
+	cout << "Тип данных char" << endl;
+	cout << " [1] d_1 = " << d_1 << " | размер: 1 б. " << endl;
+	cout << " [2] d_2 = " << d_2 << " | размер: 1 б. " << endl;
+	cout << " [3] d_3 = " << d_3 << " | размер: 1 б. " << endl;
+	cout << " [4] d_4 = " << d_4 << " | размер: 1 б. " << endl;
+	cout << " [5] d_5 = " << d_5 << " | размер: 1 б. " << endl;
+	cout << " [6] d_6 = " << d_6 << " | размер: 1 б. " << endl;
+	cout << " [7] d_7 = " << d_7 << " | размер: 1 б. " << endl;
+	cout << " [8] d_8 = " << d_8 << " | размер: 1 б. " << endl;
+	cout << " [9] d_9 = " << d_9 << " | размер: 1 б. " << endl;
+	cout << " [10] d_10 = " << d_10 << " | размер: 1 б. " << endl;
+	bool e_1 = false, e_2 = false, e_3 = false, e_4 = false, e_5 = false, e_6 = true, e_7 = true, e_8 = true, e_9 = true, e_10 = true;
+	cout << "Тип данных bool" << endl;
+	cout << " [1] e_1 = " << e_1 << " | размер: 1 б. " << endl;
+	cout << " [2] e_2 = " << e_2 << " | размер: 1 б. " << endl;
+	cout << " [3] e_3 = " << e_3 << " | размер: 1 б. " << endl;
+	cout << " [4] e_4 = " << e_4 << " | размер: 1 б. " << endl;
+	cout << " [5] e_5 = " << e_5 << " | размер: 1 б. " << endl;
+	cout << " [6] e_6 = " << e_6 << " | размер: 1 б. " << endl;
+	cout << " [7] e_7 = " << e_7 << " | размер: 1 б. " << endl;
+	cout << " [8] e_8 = " << e_8 << " | размер: 1 б. " << endl;
+	cout << " [9] e_9 = " << e_9 << " | размер: 1 б. " << endl;
+	cout << " [10] e_10 = " << e_10 << " | размер: 1 б. " << endl;
+	float f_1 = 1.1, f_2 = 1.2, f_3 = 1.3, f_4 = 1.4, f_5 = 1.5, f_6 = 1.6, f_7 = 1.7, f_8 = 1.8, f_9 = 1.9, f_10 = 1.11;
+	cout << "Тип данных float" << endl;
+	cout << " [1] f_1 = " << f_1 << " | размер: 4 б. " << endl;
+	cout << " [2] f_2 = " << f_2 << " | размер: 4 б. " << endl;
+	cout << " [3] f_3 = " << f_3 << " | размер: 4 б. " << endl;
+	cout << " [4] f_4 = " << f_4 << " | размер: 4 б. " << endl;
+	cout << " [5] f_5 = " << f_5 << " | размер: 4 б. " << endl;
+	cout << " [6] f_6 = " << f_6 << " | размер: 4 б. " << endl;
+	cout << " [7] f_7 = " << f_7 << " | размер: 4 б. " << endl;
+	cout << " [8] f_8 = " << f_8 << " | размер: 4 б. " << endl;
+	cout << " [9] f_9 = " << f_9 << " | размер: 4 б. " << endl;
+	cout << " [10] f_10 = " << f_10 << " | размер: 4 б. " << endl;
+	double g_1 = 1.11, g_2 = 1.12, g_3 = 1.13, g_4 = 1.14, g_5 = 1.15, g_6 = 1.16, g_7 = 1.17, g_8 = 1.18, g_9 = 1.19, g_10 = 1.111;
+	cout << "Тип данных double" << endl;
+	cout << " [1] g_1 = " << g_1 << " | размер: 8 б. " << endl;
+	cout << " [2] g_2 = " << g_2 << " | размер: 8 б. " << endl;
+	cout << " [3] g_3 = " << g_3 << " | размер: 8 б. " << endl;
+	cout << " [4] g_4 = " << g_4 << " | размер: 8 б. " << endl;
+	cout << " [5] g_5 = " << g_5 << " | размер: 8 б. " << endl;
+	cout << " [6] g_6 = " << g_6 << " | размер: 8 б. " << endl;
+	cout << " [7] g_7 = " << g_7 << " | размер: 8 б. " << endl;
+	cout << " [8] g_8 = " << g_8 << " | размер: 8 б. " << endl;
+	cout << " [9] g_9 = " << g_9 << " | размер: 8 б. " << endl;
+	cout << " [10] g_10 = " << g_10 << " | размер: 8 б. " << endl;
+	string st1 = "He'd trade his guns for love", st2 = "But he's caught in the crossfire,", st3 = "And he keeps wakin' up,", st4 = "But it's not to the sound of birds", st5 = "The tyranny, the violent streets,", st6 = "Deprived of all that we're blessed with,", st7 = "And we can't get enough, no", st8 = "Heaven if you sent us down,", st9 = "So we could build a playground,", st10 = "For the sinners to play as saints.";
+	cout << "Тип данных string" << endl;
+	cout << " [1] st1 = " << st1 << endl;
+	cout << " [2] st2 = " << st2 << endl;
+	cout << " [3] st3 = " << st3 << endl;
+	cout << " [4] st4 = " << st4 << endl;
+	cout << " [5] st5 = " << st5 << endl;
+	cout << " [6] st6 = " << st6 << endl;
+	cout << " [7] st7 = " << st7 << endl;
+	cout << " [8] st8 = " << st8 << endl;
+	cout << " [9] st9 = " << st9 << endl;
+	cout << " [10] st10= " << st10 << endl;
+	return 0;
+
+}
