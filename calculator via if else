@@ -1,0 +1,58 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    setlocale(0, "");
+    cout << "Калькулятор\n\n";
+    cout << "[*] Умножение\n";
+    cout << "[/] Деление\n";
+    cout << "[-] Вычитание\n";
+    cout << "[+] Сложение\n";
+    cout << "[n] Возведение числа в степень\n";
+    cout << "[!] Введите операцию: ";
+
+    char operation;
+    cin >> operation;
+
+    cout << "[!] Введите первое число: ";
+    float num1;
+    cin >> num1;
+
+
+    cout << "[!] Введите второе число: ";
+    float num2;
+    cin >> num2;
+
+    if (operation == '*')
+    {
+        cout << "[*] Результат : " << num1 << " * " << num2 << " = " << num1 * num2;
+    }
+
+    else if (operation == '/')
+    {
+        cout << "[/] Результат : " << num1 << " / " << num2 << " = " << num1 / num2;
+    }
+
+    else if (operation == '-')
+    {
+        cout << "[-] Результат : " << num1 << " - " << num2 << " = " << num1 - num2;
+    }
+
+    else if (operation == '+')
+    {
+        cout << "[/] Результат : " << num1 << " + " << num2 << " = " << num1 + num2;
+    }
+
+    else if (operation == 'n')
+    {
+        cout << "[n] Результат : " << pow(num1, num2);
+    }
+
+    else cout << "Данной функции нет";
+
+    int _; cin >> _;
+    return 0;
+
+}
