@@ -134,7 +134,6 @@ int main() {
         }
         break;
     case 6:
-
         system("cls");
         cout << "[~] Линия вертикальная\n\n";
         cout << "[~] Введите длину:";
