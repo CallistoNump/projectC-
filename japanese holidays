@@ -64,7 +64,6 @@ int main()
         cout << "~Данного месяца не существует~";
         break;
     }
-
     int _; cin >> _;
     return 0;
 }
