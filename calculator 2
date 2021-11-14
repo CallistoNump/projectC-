@@ -1,0 +1,50 @@
+#include <iostream>
+#include <math.h>
+#include <cmath>
+using namespace std;
+int calculator(int num1, int num2, char operation)
+{
+    switch (operation) {
+    case '*':return num1 * num2;
+    case '/':return num1 / num2;
+    case '-':return num1 - num2;
+    case '+':return num1 + num2;
+    case '^':return pow(num1, num2);
+    case 'q':return sqrt(num1);
+    case 'c':return cbrt(num2);
+    case '%':return num1 % num2;
+    default: return 0;
+    }
+}
+    int main() {
+
+        setlocale(0, "");
+        cout << "Калькулятор\n\n";
+        cout << "[*] Умножение\n";
+        cout << "[/] Деление\n";
+        cout << "[-] Вычитание\n";
+        cout << "[+] Сложение\n";
+        cout << "[n] Возведение числа в степень\n";
+        cout << "[q] Квадратный корень\n";
+        cout << "[c] Кубический корень\n";
+        cout << "[%] Деление с остатком\n\n";
+
+
+        cout << "[!] Введите операцию: ";
+        char operation;
+        cin >> operation;
+
+        cout << "[!] Введите первое число: ";
+        int num1;
+        cin >> num1;
+
+
+        cout << "[!] Введите второе число: ";
+        int num2;
+        cin >> num2;
+
+        cout << "[!]Результат:" << calculator(num1, num2, operation) << endl;
+
+        int _; cin >> _;
+        return 0;
+    }
