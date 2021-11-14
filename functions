@@ -1,0 +1,98 @@
+#include <iostream>
+using namespace std;
+void consoleClear() {
+    system("cls");
+}
+
+void consoleBackground() {
+    system("color 34");
+}
+void consoleFont() {
+    system("color 01");
+    
+}
+
+int getSizeInt() {
+    return sizeof(int);
+}
+char getSizechar() {
+    return sizeof(char);
+}
+double getSizedouble() {
+    return sizeof(double);
+}
+float getSizefloat() {
+    return sizeof(float);
+}
+bool getSizebool() {
+    return sizeof(bool);    
+}
+void message() {
+    cout << "Привет, я функция";
+}
+
+int main() {
+    setlocale(0, "");
+    cout << " ~ Программа - Функции\n\n";
+    cout << "[1] Очищение консоли\n";
+    cout << "[2] Изменить цвет фона\n";
+    cout << "[3] Изменить цвет текста\n";
+    cout << "[4] Вывод размера типа данных INT\n";
+    cout << "[5] Вывод размера типа данных CHAR\n";
+    cout << "[6] Вывод размера типа данных DOUBLE\n";
+    cout << "[7] Вывод размера типа данных FLOAT\n";
+    cout << "[8] Вывод размера типа данных BOOL\n";
+    cout << "[9] Вывод сообщения\n";
+
+    cout << " ~ Выберите действие: ";
+    int action;
+    cin >> action;
+    switch (action) {
+    case 1: {
+        consoleClear();
+    }
+          break;
+    case 2: {
+        consoleBackground();
+    }
+          break;
+    case 3: {
+        consoleFont();
+    
+    }
+          break;
+    case 4: {
+        cout << "~ Размер типа INT: " << getSizeInt() << endl;
+
+    }
+          break;
+    case 5: {
+        cout << "~ Размер типа CHAR: " << getSizechar() << endl;
+
+    }
+          break;
+    case 6: {
+        cout << "~ Размер типа DOUBLE: " << getSizedouble() << endl;
+
+    }
+          break;
+    case 7: {
+        cout << "~ Размер типа FLOAT: " << getSizefloat() << endl;
+
+    }
+          break;
+    case 8: {
+        cout << "~ Размер типа BOOL: " << getSizebool() << endl;
+
+    }
+          break;
+    case 9: {
+        message();
+
+    }
+          break;
+
+          int _; cin >> _;
+          return 0;
+    }
+}
