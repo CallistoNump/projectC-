@@ -1,0 +1,166 @@
+#include <iostream>
+using namespace std;
+int main() {
+    setlocale(0, "");
+    cout << "[~]Переводчик\n\n";
+    cout << "[1]Словарь русского языка\n";
+    cout << "[2]Словарь английского языка\n\n";
+    cout << "[3]Выход\n\n";
+    cout << "Выберите словарь:  ";
+    int dictionary;
+    cin >> dictionary;
+
+    switch (dictionary)
+    {
+    case 1:
+        cout << "Словарь русско - английский\n\n";
+        cout << " [1] Асолютный\n";
+        cout << " [2] Aвансы\n";
+        cout << " [3] Aварии\n";
+        cout << " [4] Базы данных\n";
+        cout << " [5] Бакалея\n";
+        cout << " [6] В воскресенье\n";
+        cout << " [7] В значительной степени\n";
+        cout << " [8] В конечном счете\n";
+        cout << " [9] Гавайи\n";
+        cout << " [10] Галерея\n";
+        cout << " [11] Газета\n";
+        cout << " [12] Гаити\n";
+        cout << " [13] Давайте\n";
+        cout << " [14] Давление\n";
+        cout << " [15] Давний\n\n";
+
+        cout << "Выберите номер слова, которое хотите перевести:";
+        int rus;
+        cin >> rus;
+        switch (rus)
+        {
+        case 1:
+            cout << "Перевод:Абсолютный - Absolute";
+            break;
+        case 2:
+            cout << "Перевод:Авансы - Advances";
+            break;
+        case 3:
+            cout << "Перевод:Аварии -  Сrashes";
+            break;
+        case 4:
+            cout << "Перевод:Базы данных - Database";
+            break;
+        case 5:
+            cout << "Перевод:Бакалея - Grocery";
+            break;
+        case 6:
+            cout << "Перевод:В воскресенье - Sunday";
+            break;
+        case 7:
+            cout << "Перевод:В значительной степени-  Largely";
+            break;
+        case 8:
+            cout << "Перевод:В конечном счете - Eventually";
+            break;
+        case 9:
+            cout << "Перевод:Гавайи -  Hawaii";
+            break;
+        case 10:
+            cout << "Перевод:Галерея - Gallery";
+            break;
+        case 11:
+            cout << "Перевод:Газета - Newspaper";
+            break;
+        case 12:
+            cout << "Перевод:Гаити - Haiti";
+            break;
+        case 13:
+            cout << "Перевод:Давайте - let's";
+            break;
+        case 14:
+            cout << "Перевод:Давление - Pressure";
+            break;
+        case 15:
+            cout << "Перевод:Давний - Longtime";
+            break;
+        default:
+            cout << " Данного слова нет!";
+        }
+    case 2:
+        cout << "Словарь англо-русский\n";
+        cout << " [1] Absolute\n";
+        cout << " [2] Advances\n";
+        cout << " [3] Сrashes\n";
+        cout << " [4] Database\n";
+        cout << " [5] Grocery\n";
+        cout << " [6] Sunday\n";
+        cout << " [7] Largely\n";
+        cout << " [8] Eventually\n";
+        cout << " [9] Hawaii\n";
+        cout << " [10] Gallery\n";
+        cout << " [11] Newspaper\n";
+        cout << " [12] Haiti\n";
+        cout << " [13] let's\n";
+        cout << " [14] Pressure\n";
+        cout << " [15] Longtime\n\n";
+
+        cout << "Выберите номер слова, которое хотите перевести:";
+        int eng;
+        cin >> eng;
+
+        switch (eng)
+        {
+        case 1:
+            cout << "Перевод:Absolute - Абсолютный";
+            break;
+        case 2:
+            cout << "Перевод:Advances - Авансы";
+            break;
+        case 3:
+            cout << "Перевод:Сrashes - Аварии";
+            break;
+        case 4:
+            cout << "Перевод:Database - Базы Данных";
+            break;
+        case 5:
+            cout << "Перевод:Grocery - Бакалея";
+            break;
+        case 6:
+            cout << "Перевод:Sunday - В воскресенье ";
+            break;
+        case 7:
+            cout << "Перевод:Largely - В значительной степени";
+            break;
+        case 8:
+            cout << "Перевод:Eventually - В конечном счете ";
+            break;
+        case 9:
+            cout << "Перевод:Hawaii - Гаваий";
+            break;
+        case 10:
+            cout << "Перевод:Gallery - Галерея";
+            break;
+        case 11:
+            cout << "Перевод:Newspaper - Газета";
+            break;
+        case 12:
+            cout << "Перевод:Гаити - Haiti";
+            break;
+        case 13:
+            cout << "Перевод:let's - Давайте";
+            break;
+        case 14:
+            cout << "Перевод:Pressure - Давление";
+            break;
+        case 15:
+            cout << "Перевод:Longtime - Давний";
+            break;
+        default:
+            cout << " Данного слова нет!";
+            break;
+        }
+    case 3:
+        return 0;
+    }
+
+    int _; cin >> _;
+    return 0;
+
+}
