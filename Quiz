@@ -1,0 +1,2626 @@
+#include <iostream>
+#include <Windows.h>
+
+#define reset "\x1b[0m"
+
+using namespace std;
+int lifetime; //жизни
+int True_answer; // правильный ответ
+int False_answer; // неправильный ответ
+char decision; // ответ пользователя
+bool check; // проверка на совпадение вопросов
+char answer;// буква вопроса
+
+void pause() { system("pause"); }// собственно, пауза
+
+void configuration(); // настроечка
+void clear() { system("cls"); } // очистка
+
+void questions()
+{
+	clear();
+	cout << " [0] Как называется еврейский Новый год? (Рош ха-Шана)\n";
+	cout << " [1] Кто из этих персонажей не дружит с Гарри Поттером? (Драко Малфой) \n";
+	cout << " [2] Какое животное не фигурирует в китайском зодиаке? (Колибри)\n";
+	cout << " [3] В какой стране проходили летние Олимпийские игры 2016 года? (Бразилия)\n";
+	cout << " [4] Какая планета самая горячая?(Венера)\n";
+	cout << " [5] Как назывался корабль капитана Джека Воробья в Пиратах Карибского моря (Черная жемчужина)?\n";
+	cout << " [6] Какая самая редкая группа крови? (I группа) \n";
+	cout << " [7] Сколько костей в теле человека? (206)\n";
+	cout << " [8] Fe — это символ какого химического элемента? (Железо)\n";
+	cout << " [9]  На каком языке говорит больше всего людей на Земле? (китайский)\n";
+	cout << " [10] Какая самая короткая трагедия Шекспира? (Макбет)\n";
+	cout << " [11] Сколько сердец у осьминога? (3)\n";
+	cout << " [12] Какая социальная сеть появилась в 2003 году? (Myspace)\n";
+	cout << " [13] Какая планета в нашей Солнечной системе самая большая? (Юпитер)\n";
+	cout << " [14] Кто расписывал потолок Сикстинской капеллы? (Микеланджело)\n";
+	cout << " [15] Какой океан самый большой на Земле? (Тихий)\n";
+	cout << " [16] Кто нарисовал Мону Лизу? (да Винчи)\n";
+	cout << " [17] Какая страна потребляет больше всего шоколада? (Швейцария)\n";
+	cout << " [18] Как мы ещё называем хлорид натрия? (Соль)\n";
+	cout << " [19] Какая река самая длинная в мире? (Нил)\n";
+	cout << " [20] Сколько дней в феврале в високосный год? (29)\n";
+	cout << " [21] Сколько градусов в круге? (360)\n";
+	cout << " [22] Какой город известен, как Город Любви? (Париж)\n";
+	cout << " [23] Сколько зубов должно быть во рту взрослого человека? (32)\n";
+	cout << " [24] Какой цвет является комплементарным зеленому?(красный)\n";
+	cout << " [25] Сколько существует книг о Гарри Поттере? (7)\n";
+	cout << " [26] Великобритания состоит из следующих стран: Англия, Ирландия, Уэльс и… (Шотландия)\n";
+	cout << " [27] Сколько элементов в таблице Менделеева? (118)\n";
+	cout << " [28] Какая змея самая смертоносная? (Черная Мамба)\n";
+	cout << " [29] Как называется семейная стая львов? (Прайд)\n";
+	cout << " [30] Сколько клавиш у стандартного современного пианино / фортепиано? (88)\n";
+	cout << " [31] Как звали женщину из греческой мифологии, у которой вместо волос были змеи? (Медуза)\n";
+	cout << " [32] За какой приблизительный период Луна совершает полный оборот вокруг Земли? ( 27 дней)\n";
+	cout << " [33] Кто в греческой мифологии является царицей царства мёртвых? (Персефона)\n";
+	cout << " [34] При какой температуре по Фаренгейту замерзает вода? ( 32 градуса)\n";
+	cout << " [35] Кто основал Microsoft? (Билл Гейтс)\n";
+	cout << " [36] Какие две планеты в нашей Солнечной системе известны, как ледяные гиганты? (Нептун и Уран)\n";
+	cout << " [37] В какой стране находится Прага? (Чешская Республика)\n";
+	cout << " [38] Сколько ребер в теле человека? (24)\n";
+	cout << " [39] Какое животное ассоциируется с Древним Египтом? (Кот)\n";
+	cout << " [40] Сколько часовых поясов в мире? (24)\n";
+	cout << " [41] Сколько колец на олимпийском флаге? (5)\n";
+	cout << " [42] Сколько глаз у паука? (8)\n";
+	cout << " [43] Как мы ещё называем бикарбонат натрия? (соль)\n";
+	cout << " [44] Что сжигаютв романе Рэя Брэдбери 451 градус по Фаренгейту? (книги)\n";
+	cout << " [45] Как называется компания, выпустившая видеоигру Mario Kart? (Nintendo)\n";
+	cout << " [46] Какова длина олимпийского бассейна (в метрах)? ( 50)\n";
+	cout << " [47] К какой стране принадлежат города Перт, Аделаида и Брисбен? (Австралия)\n";
+	cout << " [48] Какой формы знак STOP? (Восьмиугольник)\n";
+	cout << " [49] Что такое кинофобия? (Боязнь собак)\n";
+	cout << " [50] Кто дал название Тихому океану? (Фернан Магеллан)\n\n";
+	
+
+
+}
+
+void menyushka() {
+	cout << "                                                    \x1b[95m~Доброго времени суток!~\n\n ";
+	cout << "                                  \x1b[90mВы решили сыграть в викторину? Чудесно, выберите действие\n\n";
+	cout << "                                                         \x1b[96m[1] Начать игру!\n";
+	cout << "                                                         \x1b[96m[2] Хотите посмотреть вопросы с ответами?";
+	cout << "                                                         \x1b[96mНастоятельно советую смотреть их только после пройденных тестов!!\n";
+	cout << "                                                         \x1b[96m[3] Выход\n\n";
+	cout << "                                                       \x1b[93mЧто хотите выбрать?";
+
+	short customization; //выбор действия
+	cin >> customization;
+
+	switch (customization) {
+
+	case 1:
+	{
+		clear();
+		configuration();
+
+	}
+	break;
+	case 2: {
+		questions();
+
+	}
+		  break;
+	case 3: {
+		exit(0); //здесь должен быть выход
+	}
+		  break;
+	default:
+		cout << "       Наверное, вы ошиблись, данное действие невозможно!\n\n    ";
+		clear();
+		pause();
+		menyushka();
+
+	}
+
+}
+
+void configuration()
+{
+	clear();
+	cout << "                                                          \x1b[95m~Настройка игры~\n\n ";
+	cout << "                                                     \x1b[96m[1] Выбрать уровень сложности\n";
+	cout << "                                                      \x1b[96m[2] Выход обратно в меню\n";
+	cout << "                                                         \x1b[93m~Что хотите выбрать?~";
+
+	short Setting_game; // настройка игры 
+	cin >> Setting_game;
+
+	switch (Setting_game)
+	{
+
+	case 1:
+	{
+		clear();
+		cout << "                                           \x1b[95m~Выберите уровень сложности, который хотели бы пройти!!~\n\n";
+		cout << "                                         \x1b[96m[1] Уровень 1: Содержит 10 вопросов, у вас имеется 7 жизней\n";
+		cout << "                                         \x1b[96m[2] Уровень 2: Содержит 15 вопросов, у вас имеется 5 жизней\n";
+		cout << "                                         \x1b[96m[3] Уровень 3: Содержит 20 вопросов, у вас имеется 3 жизни\n\n";
+		cout << "                                         \x1b[96m[4] Выйти в меню\n\n";
+		cout << "                                               \x1b[93mЧто хотите выбрать?";
+		short  choice; // выбор настроечек уровня
+		cin >> choice;
+		switch (choice)
+		{
+		case 1:
+		{
+			srand(time(NULL));
+			cout << "[1] Уровень 1: Содержит 10 вопросов, у вас имеется 7 жизней\n";
+			clear();
+			int const size = 10;
+			int arr[size];
+
+			lifetime = 7;
+			True_answer = 0;
+			False_answer = 0;
+			decision;
+			check;
+
+			for (int i = 0; i < size;) //цикл для рандома
+			{
+				check = false;
+				int number = rand() % 50; // рандом из  50 вопросов
+
+				for (int j = 0; j < i; j++) // проверочка на совпадение вопросов 
+				{
+					if (arr[j] == number)
+					{
+						check = true;
+					}
+				}
+
+				if (check != true)
+				{
+					arr[i] = number;
+					i++;
+				}
+			}
+			for (int i = 0; i < size; i++)
+			{
+
+				if (arr[i] == 0)
+				{
+					cout << "[ - ] Как называется еврейский Новый год?" << endl;
+					cout << "a)Ханука\t\tb)Йом Кипур\t\tc)Кванза\t\td)Рош ха-Шана\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					
+					while (answer != 'd')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 1)
+				{
+					cout << "[ - ] Кто из этих персонажей не дружит с Гарри Поттером?" << endl;
+					cout << "a)Рон Уизли\t\tb)Невилл Лонгботтом\t\tc)Драко Малфой\t\td)Гермиона Грейнджер\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'c')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 2)
+				{
+					cout << "[ - ] Какое животное не фигурирует в китайском зодиаке?" << endl;
+					cout << "a)Дракон\t\tb)Кролик\t\tc)Собака\t\td)Колибри\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'd')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 3)
+				{
+					cout << "[ - ] В какой стране проходили летние Олимпийские игры 2016 года?" << endl;
+					cout << "a)Китай\t\tb)Ирландия\t\tc)Бразилия\t\td)Италия\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'c')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 4)
+				{
+					cout << "[ - ] Какая планета самая горячая?" << endl;
+					cout << "a)Венера\t\tb)Сатурн\t\tc)Меркурий\t\td)Марс\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 5)
+				{
+					cout << "[ - ] Как назывался корабль капитана Джека Воробья в Пиратах Карибского моря?" << endl;
+					cout << "a)Мародер\t\tb)Черная жемчужина\t\tc)Черный питон\t\td)Слизерин\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'b')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 6)
+				{
+					cout << "[ - ] Какая самая редкая группа крови?" << endl;
+					cout << "a)  1 группа\t\tb) 2 группа\t\tc)3 группа \t\td)4 группа\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 7)
+				{
+					cout << "[ - ] Сколько костей в теле человека?" << endl;
+					cout << "a)206\t\tb)205\t\tc)201 \t\td)209\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 8)
+				{
+					cout << "[ - ] Fe — это символ какого химического элемента?" << endl;
+					cout << "a)Цинк\t\tb)Водород\t\tc)Фтор\t\td)Железо\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 9)
+				{
+					cout << "[ - ] На каком языке говорит больше всего людей на Земле?" << endl;
+					cout << "a)китайский\t\tb)испанский\t\tc)арабский\t\td)английский\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 10)
+				{
+					cout << "[ - ] Какая самая короткая трагедия Шекспира?" << endl;
+					cout << "a)Макбет\t\tb)Гамлет\t\tc)Ромео и Джульетта\t\td)Отелло\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 11)
+				{
+					cout << "[ - ] Сколько сердец у осьминога?" << endl;
+					cout << "a)1\t\tb)2\t\tc)3\t\td)4\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 12)
+				{
+					cout << "[ - ] Какая социальная сеть появилась в 2003 году?" << endl;
+					cout << "a)Myspace\t\tb)Twitter\t\tc)Facebook\t\td)ВКонтакте\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 13)
+				{
+					cout << "[ - ] Какая планета в нашей Солнечной системе самая большая?" << endl;
+					cout << "a)Юпитер\t\tb)Сатурн\t\tc)Нептун\t\td)Земля\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 14)
+				{
+					cout << "[ - ] Кто расписывал потолок Сикстинской капеллы?" << endl;
+					cout << "a)Микеланджело\t\tb)Пабло Пикассо\t\tc)Леонардо Да Винчи\t\td)Винсент Ван Гог\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 15)
+				{
+					cout << "[ - ] Какой океан самый большой на Земле?" << endl;
+					cout << "a) Тихий\t\tb)Атлантический\t\tc) Индийский\t\td)Северный Ледовитый\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 16)
+				{
+					cout << "[ - ] Кто нарисовал Мону Лизу?" << endl;
+					cout << "a) Леонардо да Винчи\t\tb)Винсент Ван Гог\t\tc) Пабло Пикассо\t\td)Клод Моне\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 17)
+				{
+					cout << "[ - ] Какая страна потребляет больше всего шоколада?" << endl;
+					cout << "a) Швейцария\t\tb)Испания\t\tc) Германия\t\td)Северная Америка\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 18)
+				{
+					cout << "[ - ] Как мы ещё называем хлорид натрия?" << endl;
+					cout << "a) Соль\t\tb)Испания\t\tc) Сахар\t\td)Хлор\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 19)
+				{
+					cout << "[ - ]Какая река самая длинная в мире?" << endl;
+					cout << "a) Нил\t\tb)Амазонка\t\tc) Конго\t\td)Гудзон\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 20)
+				{
+					cout << "[ - ] Сколько дней в феврале в високосный год?" << endl;
+					cout << "a) 29\t\tb)28\t\tc) 30\t\td)27\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 21)
+				{
+					cout << "[ - ] Сколько градусов в круге?" << endl;
+					cout << "a) 360\t\tb)180\t\tc) 90\t\td)120\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 22)
+				{
+					cout << "[ - ] Какой город известен, как Город Любви?" << endl;
+					cout << "a) Париж\t\tb)Нью-Йорк\t\tc) Барселона\t\td)Рим\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 23)
+				{
+					cout << "[ - ] Сколько зубов должно быть во рту взрослого человека?" << endl;
+					cout << "a) 32\t\tb)31\t\tc) 29\t\td)42\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 24)
+				{
+					cout << "[ - ] Какой цвет является комплементарным зеленому?" << endl;
+					cout << "a) красный\t\tb)желтый\t\tc)синий\t\td)фиолетовый\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 25)
+				{
+					cout << "[ - ] Сколько существует книг о Гарри Поттере?" << endl;
+					cout << "a) 7\t\tb)6\t\tc)8\t\td)10\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 26)
+				{
+					cout << "[ - ]  Великобритания состоит из следующих стран: Англия, Ирландия, Уэльс и…" << endl;
+					cout << "a) Шотландия\t\tb)Австрия\t\tc)Венгрия\t\td)Франция\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 27)
+				{
+					cout << "[ - ] Сколько элементов в таблице Менделеева?" << endl;
+					cout << "a)118\t\tb)111\t\tc)112\t\td)110\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 28)
+				{
+					cout << "[ - ] Какая змея самая смертоносная?" << endl;
+					cout << "a)Питон\t\tb)Кобра\t\tc)Тигровая змея\t\td)Черная Мамба\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'd')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 29)
+				{
+					cout << "[ - ] Как называется семейная стая львов?" << endl;
+					cout << "a)Прайд\t\tb)Пакет\t\tc)Отряд\t\td)Стадо\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 30)
+				{
+					cout << "[ - ] Сколько клавиш у стандартного современного пианино / фортепиано?" << endl;
+					cout << "a)88\t\tb)87\t\tc)89\t\td)90\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 31)
+				{
+					cout << "[ - ] Как звали женщину из греческой мифологии, у которой вместо волос были змеи?" << endl;
+					cout << "a)Медуза\t\tb)Кассиопея\t\tc)Елена\t\td)Пандора\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 32)
+				{
+					cout << "[ - ] За какой приблизительный период Луна совершает полный оборот вокруг Земли?" << endl;
+					cout << "a)27 дней\t\tb)30 дней\t\tc)365 дней\t\td) 7 дней\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 33)
+				{
+					cout << "[ - ] Кто в греческой мифологии является царицей царства мёртвых?" << endl;
+					cout << "a)Персефона\t\tb)Пандора\t\tc)Медуза\t\td)Елена\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 34)
+				{
+					cout << "[ - ] При какой температуре по Фаренгейту замерзает вода?" << endl;
+					cout << "a)32 градуса\t\tb)40 градусов\t\tc)-10 градусов\t\td)0 градусов\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 35)
+				{
+					cout << "[ - ] Кто основал Microsoft?" << endl;
+					cout << "a)Билл Гейтс\t\tb)Билл Хейдер\t\tc)Стив Джобс\t\td)Марк Цукерберг\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 36)
+				{
+					cout << "[ - ] Какие две планеты в нашей Солнечной системе известны, как ледяные гиганты?" << endl;
+					cout << "a)Нептун и Уран\t\tb)Плутон и Юпитер\t\tc)Уран и Плутон\t\td)Нептун и Юпитер\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 37)
+				{
+					cout << "[ - ] В какой стране находится Прага?" << endl;
+					cout << "a)Чешская Республика\t\tb)Австрия\t\tc)Венгрия\t\td)Германия\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 38)
+				{
+					cout << "[ - ] Сколько ребер в теле человека?" << endl;
+					cout << "a) 24\t\tb)20\t\tc)21\t\td)19\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 39)
+				{
+					cout << "[ - ] Какое животное ассоциируется с Древним Египтом?" << endl;
+					cout << "a) Кот\t\tb)Колибри\t\tc)Лев\t\td)Кролик\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 40)
+				{
+					cout << "[ - ] Сколько часовых поясов в мире?" << endl;
+					cout << "a) 24\t\tb)20\t\tc)7\t\td)8\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 41)
+				{
+					cout << "[ - ] Сколько колец на олимпийском флаге?" << endl;
+					cout << "a) 5\t\tb)6\t\tc)7\t\td)8\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 42)
+				{
+					cout << "[ - ] Сколько глаз у паука?" << endl;
+					cout << "a) 8\t\tb)6\t\tc)7\t\td)9\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 43)
+				{
+					cout << "[ - ] Как мы ещё называем бикарбонат натрия?" << endl;
+					cout << "a) пищевая сода\t\tb)сахар\t\tc)соль\t\td)уксус\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 44)
+				{
+					cout << "[ - ] Что сжигаютв романе Рэя Брэдбери 451 градус по Фаренгейту?" << endl;
+					cout << "a) книги\t\tb)дома\t\tc)одежду\t\td)деньги\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 45)
+				{
+					cout << "[ - ] Как называется компания, выпустившая видеоигру Mario Kart?" << endl;
+					cout << "a) Nintendo\t\tb)Electronic Arts (EA)\t\tc)SEGA\t\td)Xbox\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 46)
+				{
+					cout << "[ - ] Какова длина олимпийского бассейна (в метрах)?" << endl;
+					cout << "a) 50\t\tb)100\t\tc)26\t\td)25\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 47)
+				{
+					cout << "[ - ] К какой стране принадлежат города Перт, Аделаида и Брисбен?" << endl;
+					cout << "a) Австралия\t\tb)Новая Зеландия\t\tc)США \t\td)Канада\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 48)
+				{
+					cout << "[ - ] Какой формы знак STOP?" << endl;
+					cout << "a) Восьмиугольник\t\tb)Шестиугольник\t\tc)Квадрат\t\td)Треугольник\n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 49)
+				{
+					cout << "[ - ] Что такое кинофобия?" << endl;
+					cout << "a) Боязнь собак\t\tb)Боязнь кинотеатров\t\tc)Боязнь появляться на публике\t\td)Боязнь снимать себя на камеру \n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+				}
+				else if (arr[i] == 50)
+				{
+					cout << "[ - ] Кто дал название Тихому океану?" << endl;
+					cout << "a) Фернан Магеллан\t\tb)Америго Веспуччи\t\tc)Васко да Гама\t\td)Христофор Колумб \n" << endl;
+					cout << "-->";
+					cin >> answer;
+					while (answer != 'a')
+					{
+						cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+						False_answer++;
+						lifetime--;
+						cin >> answer;
+					}
+					True_answer++;
+			
+				}
+				 if (lifetime == 0)
+				{
+					cout << "\nОчень жаль, вы проиграли, попробуйте снова. Не сдавайтесь!" << endl;
+					break;
+				}
+				 if ((True_answer == 10 && False_answer == 0) || (True_answer == 9 && False_answer == 1) || (True_answer == 8 && False_answer == 2) || (True_answer == 7 && False_answer == 3) || (True_answer == 6 && False_answer == 4) || (
+					True_answer == 5 && False_answer == 5) || (True_answer == 4 && False_answer == 6) || (True_answer == 3 && False_answer == 7 ))
+				{
+					cout << "\nВы победили, можете попробовать новую игру!" << endl;
+					break;
+				}
+
+			}
+			pause();
+		}
+		break;
+		case 2:
+		{  srand(time(NULL));
+		cout << "[1] Уровень 2: Содержит 15 вопросов, у вас имеется 5  жизней\n";
+		clear();
+		int const size = 15;
+		int arr[size];
+
+		lifetime = 5;
+		True_answer = 0;
+		False_answer = 0;
+		decision;
+		check;
+
+		for (int i = 0; i < size;) //цикл для рандома
+		{
+			check = false;
+			int number = rand() % 50; // рандом из  100 вопросов
+
+			for (int j = 0; j < i; j++) // проверочка на совпадение вопросов 
+			{
+				if (arr[j] == number)
+				{
+					check = true;
+				}
+			}
+
+			if (check != true)
+			{
+				arr[i] = number;
+				i++;
+			}
+		}
+		for (int i = 0; i < size; i++)
+		{
+
+			if (arr[i] == 0)
+			{
+				cout << "[ - ] Как называется еврейский Новый год?" << endl;
+				cout << "a)Ханука\t\tb)Йом Кипур\t\tc)Кванза\t\td)Рош ха-Шана\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'd')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 1)
+			{
+				cout << "[ - ] Кто из этих персонажей не дружит с Гарри Поттером?" << endl;
+				cout << "a)Рон Уизли\t\tb)Невилл Лонгботтом\t\tc)Драко Малфой\t\td)Гермиона Грейнджер\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'c')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 2)
+			{
+				cout << "[ - ] Какое животное не фигурирует в китайском зодиаке?" << endl;
+				cout << "a)Дракон\t\tb)Кролик\t\tc)Собака\t\td)Колибри\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'd')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 3)
+			{
+				cout << "[ - ] В какой стране проходили летние Олимпийские игры 2016 года?" << endl;
+				cout << "a)Китай\t\tb)Ирландия\t\tc)Бразилия\t\td)Италия\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'c')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 4)
+			{
+				cout << "[ - ] Какая планета самая горячая?" << endl;
+				cout << "a)Венера\t\tb)Сатурн\t\tc)Меркурий\t\td)Марс\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 5)
+			{
+				cout << "[ - ] Как назывался корабль капитана Джека Воробья в Пиратах Карибского моря?" << endl;
+				cout << "a)Мародер\t\tb)Черная жемчужина\t\tc)Черный питон\t\td)Слизерин\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'b')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 6)
+			{
+				cout << "[ - ] Какая самая редкая группа крови?" << endl;
+				cout << "a)  1 группа\t\tb) 2 группа\t\tc)3 группа \t\td)4 группа\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 7)
+			{
+				cout << "[ - ] Сколько костей в теле человека?" << endl;
+				cout << "a)206\t\tb)205\t\tc)201 \t\td)209\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 8)
+			{
+				cout << "[ - ] Fe — это символ какого химического элемента?" << endl;
+				cout << "a)Цинк\t\tb)Водород\t\tc)Фтор\t\td)Железо\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'd')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 9)
+			{
+				cout << "[ - ] На каком языке говорит больше всего людей на Земле?" << endl;
+				cout << "a)китайский\t\tb)испанский\t\tc)арабский\t\td)английский\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 10)
+			{
+				cout << "[ - ] Какая самая короткая трагедия Шекспира?" << endl;
+				cout << "a)Макбет\t\tb)Гамлет\t\tc)Ромео и Джульетта\t\td)Отелло\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 11)
+			{
+				cout << "[ - ] Сколько сердец у осьминога?" << endl;
+				cout << "a)1\t\tb)2\t\tc)3\t\td)4\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'c')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 12)
+			{
+				cout << "[ - ] Какая социальная сеть появилась в 2003 году?" << endl;
+				cout << "a)Myspace\t\tb)Twitter\t\tc)Facebook\t\td)ВКонтакте\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 13)
+			{
+				cout << "[ - ] Какая планета в нашей Солнечной системе самая большая?" << endl;
+				cout << "a)Юпитер\t\tb)Сатурн\t\tc)Нептун\t\td)Земля\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 14)
+			{
+				cout << "[ - ] Кто расписывал потолок Сикстинской капеллы?" << endl;
+				cout << "a)Микеланджело\t\tb)Пабло Пикассо\t\tc)Леонардо Да Винчи\t\td)Винсент Ван Гог\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 15)
+			{
+				cout << "[ - ] Какой океан самый большой на Земле?" << endl;
+				cout << "a) Тихий\t\tb)Атлантический\t\tc) Индийский\t\td)Северный Ледовитый\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 16)
+			{
+				cout << "[ - ] Кто нарисовал Мону Лизу?" << endl;
+				cout << "a) Леонардо да Винчи\t\tb)Винсент Ван Гог\t\tc) Пабло Пикассо\t\td)Клод Моне\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 17)
+			{
+				cout << "[ - ] Какая страна потребляет больше всего шоколада?" << endl;
+				cout << "a) Швейцария\t\tb)Испания\t\tc) Германия\t\td)Северная Америка\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 18)
+			{
+				cout << "[ - ] Как мы ещё называем хлорид натрия?" << endl;
+				cout << "a) Соль\t\tb)Испания\t\tc) Сахар\t\td)Хлор\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 19)
+			{
+				cout << "[ - ]Какая река самая длинная в мире?" << endl;
+				cout << "a) Нил\t\tb)Амазонка\t\tc) Конго\t\td)Гудзон\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 20)
+			{
+				cout << "[ - ] Сколько дней в феврале в високосный год?" << endl;
+				cout << "a) 29\t\tb)28\t\tc) 30\t\td)27\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 21)
+			{
+				cout << "[ - ] Сколько градусов в круге?" << endl;
+				cout << "a) 360\t\tb)180\t\tc) 90\t\td)120\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 22)
+			{
+				cout << "[ - ] Какой город известен, как Город Любви?" << endl;
+				cout << "a) Париж\t\tb)Нью-Йорк\t\tc) Барселона\t\td)Рим\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 23)
+			{
+				cout << "[ - ] Сколько зубов должно быть во рту взрослого человека?" << endl;
+				cout << "a) 32\t\tb)31\t\tc) 29\t\td)42\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 24)
+			{
+				cout << "[ - ] Какой цвет является комплементарным зеленому?" << endl;
+				cout << "a) красный\t\tb)желтый\t\tc)синий\t\td)фиолетовый\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 25)
+			{
+				cout << "[ - ] Сколько существует книг о Гарри Поттере?" << endl;
+				cout << "a) 7\t\tb)6\t\tc)8\t\td)10\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 26)
+			{
+				cout << "[ - ]  Великобритания состоит из следующих стран: Англия, Ирландия, Уэльс и…" << endl;
+				cout << "a) Шотландия\t\tb)Австрия\t\tc)Венгрия\t\td)Франция\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 27)
+			{
+				cout << "[ - ] Сколько элементов в таблице Менделеева?" << endl;
+				cout << "a)118\t\tb)111\t\tc)112\t\td)110\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 28)
+			{
+				cout << "[ - ] Какая змея самая смертоносная?" << endl;
+				cout << "a)Питон\t\tb)Кобра\t\tc)Тигровая змея\t\td)Черная Мамба\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'd')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 29)
+			{
+				cout << "[ - ] Как называется семейная стая львов?" << endl;
+				cout << "a)Прайд\t\tb)Пакет\t\tc)Отряд\t\td)Стадо\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 30)
+			{
+				cout << "[ - ] Сколько клавиш у стандартного современного пианино / фортепиано?" << endl;
+				cout << "a)88\t\tb)87\t\tc)89\t\td)90\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 31)
+			{
+				cout << "[ - ] Как звали женщину из греческой мифологии, у которой вместо волос были змеи?" << endl;
+				cout << "a)Медуза\t\tb)Кассиопея\t\tc)Елена\t\td)Пандора\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 32)
+			{
+				cout << "[ - ] За какой приблизительный период Луна совершает полный оборот вокруг Земли?" << endl;
+				cout << "a)27 дней\t\tb)30 дней\t\tc)365 дней\t\td) 7 дней\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 33)
+			{
+				cout << "[ - ] Кто в греческой мифологии является царицей царства мёртвых?" << endl;
+				cout << "a)Персефона\t\tb)Пандора\t\tc)Медуза\t\td)Елена\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 34)
+			{
+				cout << "[ - ] При какой температуре по Фаренгейту замерзает вода?" << endl;
+				cout << "a)32 градуса\t\tb)40 градусов\t\tc)-10 градусов\t\td)0 градусов\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 35)
+			{
+				cout << "[ - ] Кто основал Microsoft?" << endl;
+				cout << "a)Билл Гейтс\t\tb)Билл Хейдер\t\tc)Стив Джобс\t\td)Марк Цукерберг\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 36)
+			{
+				cout << "[ - ] Какие две планеты в нашей Солнечной системе известны, как ледяные гиганты?" << endl;
+				cout << "a)Нептун и Уран\t\tb)Плутон и Юпитер\t\tc)Уран и Плутон\t\td)Нептун и Юпитер\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 37)
+			{
+				cout << "[ - ] В какой стране находится Прага?" << endl;
+				cout << "a)Чешская Республика\t\tb)Австрия\t\tc)Венгрия\t\td)Германия\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 38)
+			{
+				cout << "[ - ] Сколько ребер в теле человека?" << endl;
+				cout << "a) 24\t\tb)20\t\tc)21\t\td)19\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 39)
+			{
+				cout << "[ - ] Какое животное ассоциируется с Древним Египтом?" << endl;
+				cout << "a) Кот\t\tb)Колибри\t\tc)Лев\t\td)Кролик\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 40)
+			{
+				cout << "[ - ] Сколько часовых поясов в мире?" << endl;
+				cout << "a) 24\t\tb)20\t\tc)7\t\td)8\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 41)
+			{
+				cout << "[ - ] Сколько колец на олимпийском флаге?" << endl;
+				cout << "a) 5\t\tb)6\t\tc)7\t\td)8\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 42)
+			{
+				cout << "[ - ] Сколько глаз у паука?" << endl;
+				cout << "a) 8\t\tb)6\t\tc)7\t\td)9\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 43)
+			{
+				cout << "[ - ] Как мы ещё называем бикарбонат натрия?" << endl;
+				cout << "a) пищевая сода\t\tb)сахар\t\tc)соль\t\td)уксус\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 44)
+			{
+				cout << "[ - ] Что сжигаютв романе Рэя Брэдбери 451 градус по Фаренгейту?" << endl;
+				cout << "a) книги\t\tb)дома\t\tc)одежду\t\td)деньги\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 45)
+			{
+				cout << "[ - ] Как называется компания, выпустившая видеоигру Mario Kart?" << endl;
+				cout << "a) Nintendo\t\tb)Electronic Arts (EA)\t\tc)SEGA\t\td)Xbox\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 46)
+			{
+				cout << "[ - ] Какова длина олимпийского бассейна (в метрах)?" << endl;
+				cout << "a) 50\t\tb)100\t\tc)26\t\td)25\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 47)
+			{
+				cout << "[ - ] К какой стране принадлежат города Перт, Аделаида и Брисбен?" << endl;
+				cout << "a) Австралия\t\tb)Новая Зеландия\t\tc)США \t\td)Канада\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 48)
+			{
+				cout << "[ - ] Какой формы знак STOP?" << endl;
+				cout << "a) Восьмиугольник\t\tb)Шестиугольник\t\tc)Квадрат\t\td)Треугольник\n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 49)
+			{
+				cout << "[ - ] Что такое кинофобия?" << endl;
+				cout << "a) Боязнь собак\t\tb)Боязнь кинотеатров\t\tc)Боязнь появляться на публике\t\td)Боязнь снимать себя на камеру \n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			else if (arr[i] == 50)
+			{
+				cout << "[ - ] Кто дал название Тихому океану?" << endl;
+				cout << "a) Фернан Магеллан\t\tb)Америго Веспуччи\t\tc)Васко да Гама\t\td)Христофор Колумб \n" << endl;
+				cout << "-->";
+				cin >> answer;
+				while (answer != 'a')
+				{
+					cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+					False_answer++;
+					lifetime--;
+					cin >> answer;
+				}
+				True_answer++;
+			}
+			if (lifetime == 0)
+			{
+				cout << "\nОчень жаль, вы проиграли, попробуйте снова. Не сдавайтесь!" << endl;
+				break;
+			}
+			if ((True_answer == 15 && False_answer == 0) || (True_answer == 14 && False_answer == 1) || (True_answer == 13 && False_answer == 2) || (True_answer == 12 && False_answer == 3) || (True_answer == 11 && False_answer == 4) ||
+
+				(True_answer == 10 && False_answer == 5))
+			{
+				cout << "\nВы победили, можете попробовать новую игру!" << endl;
+				break;
+			}
+
+		}
+		pause();
+		}
+		break;
+		case 3:
+		{ srand(time(NULL));
+	cout << "[1] Уровень 3: Содержит 20 вопросов, у вас имеется 3  жизней\n";
+	clear();
+	int const size = 20;
+	int arr[size];
+
+	lifetime = 3;
+	True_answer = 0;
+	False_answer = 0;
+	decision;
+	check;
+
+	for (int i = 0; i < size;) //цикл для рандома
+	{
+		check = false;
+		int number = rand() % 50; // рандом из  50 вопросов
+
+		for (int j = 0; j < i; j++) // проверочка на совпадение вопросов 
+		{
+			if (arr[j] == number)
+			{
+				check = true;
+			}
+		}
+
+		if (check != true)
+		{
+			arr[i] = number;
+			i++;
+		}
+	}
+	for (int i = 0; i < size; i++)
+	{
+
+		if (arr[i] == 0)
+		{
+			cout << "[ - ] Как называется еврейский Новый год?" << endl;
+			cout << "a)Ханука\t\tb)Йом Кипур\t\tc)Кванза\t\td)Рош ха-Шана\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'd')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 1)
+		{
+			cout << "[ - ] Кто из этих персонажей не дружит с Гарри Поттером?" << endl;
+			cout << "a)Рон Уизли\t\tb)Невилл Лонгботтом\t\tc)Драко Малфой\t\td)Гермиона Грейнджер\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 2)
+		{
+			cout << "[ - ] Какое животное не фигурирует в китайском зодиаке?" << endl;
+			cout << "a)Дракон\t\tb)Кролик\t\tc)Собака\t\td)Колибри\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'd')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 3)
+		{
+			cout << "[ - ] В какой стране проходили летние Олимпийские игры 2016 года?" << endl;
+			cout << "a)Китай\t\tb)Ирландия\t\tc)Бразилия\t\td)Италия\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'c')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 4)
+		{
+			cout << "[ - ] Какая планета самая горячая?" << endl;
+			cout << "a)Венера\t\tb)Сатурн\t\tc)Меркурий\t\td)Марс\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 5)
+		{
+			cout << "[ - ] Как назывался корабль капитана Джека Воробья в Пиратах Карибского моря?" << endl;
+			cout << "a)Мародер\t\tb)Черная жемчужина\t\tc)Черный питон\t\td)Слизерин\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'b')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 6)
+		{
+			cout << "[ - ] Какая самая редкая группа крови?" << endl;
+			cout << "a)  1 группа\t\tb) 2 группа\t\tc)3 группа \t\td)4 группа\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 7)
+		{
+			cout << "[ - ] Сколько костей в теле человека?" << endl;
+			cout << "a)206\t\tb)205\t\tc)201 \t\td)209\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 8)
+		{
+			cout << "[ - ] Fe — это символ какого химического элемента?" << endl;
+			cout << "a)Цинк\t\tb)Водород\t\tc)Фтор\t\td)Железо\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'd')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 9)
+		{
+			cout << "[ - ] На каком языке говорит больше всего людей на Земле?" << endl;
+			cout << "a)китайский\t\tb)испанский\t\tc)арабский\t\td)английский\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 10)
+		{
+			cout << "[ - ] Какая самая короткая трагедия Шекспира?" << endl;
+			cout << "a)Макбет\t\tb)Гамлет\t\tc)Ромео и Джульетта\t\td)Отелло\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 11)
+		{
+			cout << "[ - ] Сколько сердец у осьминога?" << endl;
+			cout << "a)1\t\tb)2\t\tc)3\t\td)4\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'c')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 12)
+		{
+			cout << "[ - ] Какая социальная сеть появилась в 2003 году?" << endl;
+			cout << "a)Myspace\t\tb)Twitter\t\tc)Facebook\t\td)ВКонтакте\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 13)
+		{
+			cout << "[ - ] Какая планета в нашей Солнечной системе самая большая?" << endl;
+			cout << "a)Юпитер\t\tb)Сатурн\t\tc)Нептун\t\td)Земля\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 14)
+		{
+			cout << "[ - ] Кто расписывал потолок Сикстинской капеллы?" << endl;
+			cout << "a)Микеланджело\t\tb)Пабло Пикассо\t\tc)Леонардо Да Винчи\t\td)Винсент Ван Гог\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 15)
+		{
+			cout << "[ - ] Какой океан самый большой на Земле?" << endl;
+			cout << "a) Тихий\t\tb)Атлантический\t\tc) Индийский\t\td)Северный Ледовитый\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 16)
+		{
+			cout << "[ - ] Кто нарисовал Мону Лизу?" << endl;
+			cout << "a) Леонардо да Винчи\t\tb)Винсент Ван Гог\t\tc) Пабло Пикассо\t\td)Клод Моне\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 17)
+		{
+			cout << "[ - ] Какая страна потребляет больше всего шоколада?" << endl;
+			cout << "a) Швейцария\t\tb)Испания\t\tc) Германия\t\td)Северная Америка\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 18)
+		{
+			cout << "[ - ] Как мы ещё называем хлорид натрия?" << endl;
+			cout << "a) Соль\t\tb)Испания\t\tc) Сахар\t\td)Хлор\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 19)
+		{
+			cout << "[ - ]Какая река самая длинная в мире?" << endl;
+			cout << "a) Нил\t\tb)Амазонка\t\tc) Конго\t\td)Гудзон\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 20)
+		{
+			cout << "[ - ] Сколько дней в феврале в високосный год?" << endl;
+			cout << "a) 29\t\tb)28\t\tc) 30\t\td)27\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 21)
+		{
+			cout << "[ - ] Сколько градусов в круге?" << endl;
+			cout << "a) 360\t\tb)180\t\tc) 90\t\td)120\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 22)
+		{
+			cout << "[ - ] Какой город известен, как Город Любви?" << endl;
+			cout << "a) Париж\t\tb)Нью-Йорк\t\tc) Барселона\t\td)Рим\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 23)
+		{
+			cout << "[ - ] Сколько зубов должно быть во рту взрослого человека?" << endl;
+			cout << "a) 32\t\tb)31\t\tc) 29\t\td)42\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 24)
+		{
+			cout << "[ - ] Какой цвет является комплементарным зеленому?" << endl;
+			cout << "a) красный\t\tb)желтый\t\tc)синий\t\td)фиолетовый\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 25)
+		{
+			cout << "[ - ] Сколько существует книг о Гарри Поттере?" << endl;
+			cout << "a) 7\t\tb)6\t\tc)8\t\td)10\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 26)
+		{
+			cout << "[ - ]  Великобритания состоит из следующих стран: Англия, Ирландия, Уэльс и…" << endl;
+			cout << "a) Шотландия\t\tb)Австрия\t\tc)Венгрия\t\td)Франция\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 27)
+		{
+			cout << "[ - ] Сколько элементов в таблице Менделеева?" << endl;
+			cout << "a)118\t\tb)111\t\tc)112\t\td)110\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 28)
+		{
+			cout << "[ - ] Какая змея самая смертоносная?" << endl;
+			cout << "a)Питон\t\tb)Кобра\t\tc)Тигровая змея\t\td)Черная Мамба\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'd')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 29)
+		{
+			cout << "[ - ] Как называется семейная стая львов?" << endl;
+			cout << "a)Прайд\t\tb)Пакет\t\tc)Отряд\t\td)Стадо\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 30)
+		{
+			cout << "[ - ] Сколько клавиш у стандартного современного пианино / фортепиано?" << endl;
+			cout << "a)88\t\tb)87\t\tc)89\t\td)90\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 31)
+		{
+			cout << "[ - ] Как звали женщину из греческой мифологии, у которой вместо волос были змеи?" << endl;
+			cout << "a)Медуза\t\tb)Кассиопея\t\tc)Елена\t\td)Пандора\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 32)
+		{
+			cout << "[ - ] За какой приблизительный период Луна совершает полный оборот вокруг Земли?" << endl;
+			cout << "a)27 дней\t\tb)30 дней\t\tc)365 дней\t\td) 7 дней\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 33)
+		{
+			cout << "[ - ] Кто в греческой мифологии является царицей царства мёртвых?" << endl;
+			cout << "a)Персефона\t\tb)Пандора\t\tc)Медуза\t\td)Елена\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 34)
+		{
+			cout << "[ - ] При какой температуре по Фаренгейту замерзает вода?" << endl;
+			cout << "a)32 градуса\t\tb)40 градусов\t\tc)-10 градусов\t\td)0 градусов\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 35)
+		{
+			cout << "[ - ] Кто основал Microsoft?" << endl;
+			cout << "a)Билл Гейтс\t\tb)Билл Хейдер\t\tc)Стив Джобс\t\td)Марк Цукерберг\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 36)
+		{
+			cout << "[ - ] Какие две планеты в нашей Солнечной системе известны, как ледяные гиганты?" << endl;
+			cout << "a)Нептун и Уран\t\tb)Плутон и Юпитер\t\tc)Уран и Плутон\t\td)Нептун и Юпитер\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 37)
+		{
+			cout << "[ - ] В какой стране находится Прага?" << endl;
+			cout << "a)Чешская Республика\t\tb)Австрия\t\tc)Венгрия\t\td)Германия\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 38)
+		{
+			cout << "[ - ] Сколько ребер в теле человека?" << endl;
+			cout << "a) 24\t\tb)20\t\tc)21\t\td)19\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 39)
+		{
+			cout << "[ - ] Какое животное ассоциируется с Древним Египтом?" << endl;
+			cout << "a) Кот\t\tb)Колибри\t\tc)Лев\t\td)Кролик\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 40)
+		{
+			cout << "[ - ] Сколько часовых поясов в мире?" << endl;
+			cout << "a) 24\t\tb)20\t\tc)7\t\td)8\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 41)
+		{
+			cout << "[ - ] Сколько колец на олимпийском флаге?" << endl;
+			cout << "a) 5\t\tb)6\t\tc)7\t\td)8\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 42)
+		{
+			cout << "[ - ] Сколько глаз у паука?" << endl;
+			cout << "a) 8\t\tb)6\t\tc)7\t\td)9\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 43)
+		{
+			cout << "[ - ] Как мы ещё называем бикарбонат натрия?" << endl;
+			cout << "a) пищевая сода\t\tb)сахар\t\tc)соль\t\td)уксус\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 44)
+		{
+			cout << "[ - ] Что сжигаютв романе Рэя Брэдбери 451 градус по Фаренгейту?" << endl;
+			cout << "a) книги\t\tb)дома\t\tc)одежду\t\td)деньги\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 45)
+		{
+			cout << "[ - ] Как называется компания, выпустившая видеоигру Mario Kart?" << endl;
+			cout << "a) Nintendo\t\tb)Electronic Arts (EA)\t\tc)SEGA\t\td)Xbox\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 46)
+		{
+			cout << "[ - ] Какова длина олимпийского бассейна (в метрах)?" << endl;
+			cout << "a) 50\t\tb)100\t\tc)26\t\td)25\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 47)
+		{
+			cout << "[ - ] К какой стране принадлежат города Перт, Аделаида и Брисбен?" << endl;
+			cout << "a) Австралия\t\tb)Новая Зеландия\t\tc)США \t\td)Канада\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 48)
+		{
+			cout << "[ - ] Какой формы знак STOP?" << endl;
+			cout << "a) Восьмиугольник\t\tb)Шестиугольник\t\tc)Квадрат\t\td)Треугольник\n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 49)
+		{
+			cout << "[ - ] Что такое кинофобия?" << endl;
+			cout << "a) Боязнь собак\t\tb)Боязнь кинотеатров\t\tc)Боязнь появляться на публике\t\td)Боязнь снимать себя на камеру \n" << endl;
+			cout << "-->";
+			cin >> answer;
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		else if (arr[i] == 50)
+		{
+			cout << "[ - ] Кто дал название Тихому океану?" << endl;
+			cout << "a) Фернан Магеллан\t\tb)Америго Веспуччи\t\tc)Васко да Гама\t\td)Христофор Колумб \n" << endl;
+			cout << "-->";
+			while (answer != 'a')
+			{
+				cout << " Вы выбрали неправильный вариант ответа :( Попробуйте еще раз: ";
+				False_answer++;
+				lifetime--;
+				cin >> answer;
+			}
+			True_answer++;
+		}
+		  if (lifetime == 0)
+		{
+			cout << "\nОчень жаль, вы проиграли, попробуйте снова. Не сдавайтесь!" << endl;
+			break;
+		}
+		 if ((True_answer == 20 && False_answer == 0) || (True_answer == 19 && False_answer == 1) || (True_answer == 18 && False_answer == 2) || (True_answer == 17 && False_answer == 3))
+		{
+			cout << "\nВы победили, можете попробовать новую игру!" << endl;
+			break;
+		}
+
+	}
+	pause();
+	}
+		break;
+		case 4:
+		{
+		configuration();
+	}
+		break;
+		default:
+			cout << "       Наверное, вы ошиблись, данное действие невозможно!\n\n    ";
+			clear();
+			pause();
+			configuration();
+	}
+	case 2:
+	{
+		clear();
+		menyushka();
+	}
+	break;
+
+
+
+	}
+}
+}
+
+int main() {
+	setlocale(0, "");
+	menyushka();
+
+	system("pause");
+	int _; cin >> _;
+	return 0;
+
+}
+
